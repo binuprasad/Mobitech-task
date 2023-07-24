@@ -10,15 +10,18 @@ class ProductController extends GetxController{
   void onInit() {
     super.onInit();
     getproducts();
+    ProductService().getProduct();
   }
 
 
-  RxList product =<ProductModel> [].obs;
+  RxList  <ProductModel> product = <ProductModel>[].obs;
 
   void getproducts()async{
     final response = await ProductService().getProduct();
+    // log(response!.description.toString());
     if(response != null){
-      product.value = response.tagList;
+      log('entered');
+      product.value = response ;
     }else{
       log('nulll');
     }
