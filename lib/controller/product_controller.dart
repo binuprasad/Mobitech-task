@@ -12,6 +12,7 @@ class ProductController extends GetxController{
     getproducts();
     ProductService().getProduct();
   }
+  RxBool isLoading = false.obs;
 
 
   RxList  <ProductModel> product = <ProductModel>[].obs;
@@ -22,6 +23,7 @@ class ProductController extends GetxController{
     if(response != null){
       log('entered');
       product.value = response ;
+    isLoading.value = true;
     }else{
       log('nulll');
     }
